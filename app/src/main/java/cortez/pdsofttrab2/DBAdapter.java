@@ -46,9 +46,11 @@ public class DBAdapter extends SQLiteOpenHelper{
             values.put("usuario", user.getUser());
             values.put("senha", user.getSenha());
             db.insert("tabela",null,values);
+            db.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
+
 
 
 
@@ -70,6 +72,7 @@ public class DBAdapter extends SQLiteOpenHelper{
                     user = new User();
                     user.setUser(cursor.getString(cursor.getColumnIndex("usuario")));
                     user.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+                    user.setId(cursor.getInt(cursor.getColumnIndex("id")));
 
                     // Add book to books
                     users.add(user);
@@ -77,6 +80,7 @@ public class DBAdapter extends SQLiteOpenHelper{
             }
 
             Log.d("getAllUsers()", users.toString());
+            db.close();
         }catch(SQLException e){
             e.printStackTrace();
             return null;
@@ -86,6 +90,32 @@ public class DBAdapter extends SQLiteOpenHelper{
         return users;
 
     }
+
+    public List<User> searchFor(String row, String word, String table) {
+        List<User> users = new LinkedList<User>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            Cursor cursor = db.rawQuery("SELECT " + row + " FROM " + table + " WHERE " + row + " =?", new String[]{word});
+            User user = null;
+            if (cursor.moveToFirst()) {
+                do {
+                    user = new User();
+                    user.setUser(cursor.getString(cursor.getColumnIndex("usuario")));
+                    users.add(user);
+                } while (cursor.moveToNext());
+            }
+
+            Log.d("getAllUsers()", users.toString());
+            db.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return users;
+    }
+
+
+
 
 
 

@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cortez.pdsofttrab2.MainActivity">
 
+
     <Button
         android:text="Criar novo usuario"
         android:layout_width="wrap_content"
@@ -18,4 +19,48 @@
         android:layout_alignParentEnd="true"
         android:onClick="onClick"
         android:id="@+id/newUserButton" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userField"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="Usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:id="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/userEditText"
+            android:layout_below="@+id/textView3"
+            android:layout_alignStart="@+id/senhaEditText" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/senhaEditText"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="Senha"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/userEditText"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </RelativeLayout>

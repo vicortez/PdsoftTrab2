@@ -34,20 +34,28 @@ public class NewUser extends AppCompatActivity {
 
     public void onClick(View v){
         switch (v.getId()){
+
             case (R.id.createNewUserButton):
                 user = new User();
                 user.setUser(userEditText.getText().toString());
                 user.setSenha(senhaEdittext.getText().toString());
-                db.addUser(user);
-                Toast t = Toast.makeText(this, "user adicionado!\n", Toast.LENGTH_LONG);
-                t.show();
+                if(db.searchFor("usuario",user.getUser(),"tabela").size() == 0) {
+                    db.addUser(user);
+                    Toast t = Toast.makeText(this, "user adicionado!", Toast.LENGTH_LONG);
+                    t.show();
+                }
+                else{
+                    Toast t = Toast.makeText(this, "Nome de usuario já existe.",Toast.LENGTH_LONG);
+                    t.show();
+                }
                 break;
+
             case(R.id.showTableButton):
                 List<User> users = db.getAllUsers();
                 for (int i=0;i<users.size();i++) {
                     System.out.println(users.get(i).getUser());
                 }
-                t = Toast.makeText(this, "mostrando tabela", Toast.LENGTH_LONG);
+                Toast t = Toast.makeText(this, "mostrando tabela", Toast.LENGTH_LONG);
                 t.show();
                 listaTextView.setText("");
                 for (int i=0;i<users.size();i++) {

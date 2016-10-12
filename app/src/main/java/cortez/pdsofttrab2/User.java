@@ -11,8 +11,9 @@ public class User {
     String senha;
     String nome;
     String rua;
+    int id;
 
-    User(){
+    User() {
 
     }
 
@@ -47,4 +48,8 @@ public class User {
     public void setUser(String user) {
         this.user = user;
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 }
