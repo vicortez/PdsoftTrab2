@@ -10,4 +10,71 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cortez.pdsofttrab2.UserScreen">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5sp"
+                android:id="@+id/streetField"
+                android:layout_below="@+id/nameField"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:text="Rua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ruaTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="1.04"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/ruaEditText"
+                    android:padding="10sp"
+                    android:layout_weight="2.79"
+                    android:text="nao implementado" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayout"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/nameField">
+
+                <TextView
+                    android:text="Nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nomeTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="0.61"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/nomeEditText"
+                    android:padding="10sp"
+                    android:layout_weight="3.87"
+                    android:text="nao implementado" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

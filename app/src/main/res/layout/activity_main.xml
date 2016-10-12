@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/userField"
         android:layout_centerVertical="true"
+        android:padding="1sp"
         android:layout_alignParentStart="true">
 
         <TextView
@@ -63,4 +64,13 @@
             android:layout_below="@+id/userEditText"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userField"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/loginButton"
+        android:onClick="onClick"/>
 </RelativeLayout>

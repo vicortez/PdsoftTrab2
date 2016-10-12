@@ -32,8 +32,7 @@ public class DBAdapter extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older users table if existed
         db.execSQL("DROP TABLE IF EXISTS tabela");
-
-        // create fresh books table
+        // create fresh users table
         this.onCreate(db);
     }
 
@@ -50,11 +49,38 @@ public class DBAdapter extends SQLiteOpenHelper{
         }catch(SQLException e){
             e.printStackTrace();
         }
-
-
-
-
     }
+
+//    public User getBook(String user){
+//        // 1. get reference to readable DB
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        // 2. build query
+//        Cursor cursor =
+//                db.query(TABLE_BOOKS, // a. table
+//                        COLUMNS, // b. column names
+//                        " id = ?", // c. selections
+//                        new String[] { String.valueOf(id) }, // d. selections args
+//                        null, // e. group by
+//                        null, // f. having
+//                        null, // g. order by
+//                        null); // h. limit
+//
+//        // 3. if we got results get the first one
+//        if (cursor != null)
+//            cursor.moveToFirst();
+//
+//        // 4. build book object
+//        Book book = new Book();
+//        book.setId(Integer.parseInt(cursor.getString(0)));
+//        book.setTitle(cursor.getString(1));
+//        book.setAuthor(cursor.getString(2));
+//
+//        //log
+//        Log.d("getBook("+id+")", book.toString());
+//
+//        // 5. return book
+//        return book;
+//    }
 
     public List<User> getAllUsers(){
 
