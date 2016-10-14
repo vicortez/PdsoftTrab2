@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -73,8 +74,11 @@ public class NewUser extends AppCompatActivity {
                 user.setUser(userEditText.getText().toString());
                 user.setSenha(senhaEdittext.getText().toString());
                 Bitmap foto = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                user.setFoto(String.valueOf(foto));
-
+                //precisamos salvar o bitmap da foto em forma de bytearray
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                foto.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
+                byte[] fotoByteArray = byteArrayOutputStream.toByteArray();
+                user.setFoto(fotoByteArray);
 
                 //checamos se ja existe um user com esse username, se nao, adicionamos.
                 if(db.searchFor("usuario",user.getUser(),"tabela").size() == 0) {

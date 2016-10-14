@@ -14,7 +14,7 @@ public class User {
     String nome;
     String rua;
     int id;
-    String foto;
+    byte[] foto;
 
 
 
@@ -60,11 +60,11 @@ public class User {
 
     public void setId(int id) { this.id = id; }
 
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 }

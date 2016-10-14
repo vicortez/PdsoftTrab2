@@ -42,10 +42,10 @@ public class DBAdapter extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         // 2. create ContentValues to add key "column"/value
         ContentValues values = new ContentValues();
-        db.execSQL("CREATE TABLE IF NOT EXISTS tabela (usuario VARCHAR(40), senha VARCHAR(30), id INT PRIMARY KEY UNIQUE)");
         try{
             values.put("usuario", user.getUser());
             values.put("senha", user.getSenha());
+            values.put("id",user.getId());
             values.put("foto", user.getFoto());
             db.insert("tabela",null,values);
             db.close();
@@ -124,12 +124,15 @@ public class DBAdapter extends SQLiteOpenHelper{
         List<User> users = new LinkedList<User>();
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            Cursor cursor = db.rawQuery("SELECT " + row + " FROM " + table + " WHERE " + row + " =?", new String[]{word});
+            Cursor cursor = db.rawQuery("SELECT * " + " FROM " + table + " WHERE " + row + " =?", new String[]{word});
             User user = null;
             if (cursor.moveToFirst()) {
                 do {
                     user = new User();
                     user.setUser(cursor.getString(cursor.getColumnIndex("usuario")));
+                    user.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    user.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+                    user.setFoto(cursor.getBlob(cursor.getColumnIndex("foto")));
                     users.add(user);
                 } while (cursor.moveToNext());
             }
