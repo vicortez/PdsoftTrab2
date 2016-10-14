@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.List;
@@ -41,7 +43,7 @@ public class NewUser extends AppCompatActivity {
         userEditText = (TextView) findViewById(R.id.userEditText);
         senhaEdittext = (TextView) findViewById(R.id.senhaEditText);
         listaTextView = (TextView) findViewById(R.id.listaTextView);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageViewCreate);
     }
 
     public void onClick(View v){
@@ -65,9 +67,16 @@ public class NewUser extends AppCompatActivity {
                 break;
 
             case (R.id.createNewUserButton):
+
+                //criamos um user com as informacoes das views
                 user = new User();
                 user.setUser(userEditText.getText().toString());
                 user.setSenha(senhaEdittext.getText().toString());
+                Bitmap foto = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                user.setFoto(String.valueOf(foto));
+
+
+                //checamos se ja existe um user com esse username, se nao, adicionamos.
                 if(db.searchFor("usuario",user.getUser(),"tabela").size() == 0) {
                     db.addUser(user);
                     Toast t = Toast.makeText(this, "user adicionado!", Toast.LENGTH_LONG);
@@ -111,13 +120,18 @@ public class NewUser extends AppCompatActivity {
                     //get a bitmap from the stram
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     imageView.setImageBitmap(bitmap);
+//                    byte[] image = new byte[inputStream.available()];
+//                    inputStream.read(image);
 
                 } catch (FileNotFoundException e) {
                     Toast.makeText(this, "falha ao abrir imagem",Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
             }
         }
     }
+
 }

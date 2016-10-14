@@ -1,5 +1,7 @@
 package cortez.pdsofttrab2;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Usuario on 10/10/2016.
  */
@@ -12,6 +14,11 @@ public class User {
     String nome;
     String rua;
     int id;
+    String foto;
+
+
+
+
 
     User() {
 
@@ -52,4 +59,12 @@ public class User {
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 }
