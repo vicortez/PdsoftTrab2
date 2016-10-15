@@ -39,7 +39,7 @@ public class UserScreen extends AppCompatActivity {
         user = users.get(0);
 
         // exemplo para rua pegando o nome de usuario e mostrando(errado, consertar isaac)
-        ruaTextView.setText(user.getUser());
+        ruaTextView.setText(user.getUser() + " id: "+ user.getId());
 
         //transformando bytearray em bitmap para poder exibir
         Bitmap bitmap = BitmapFactory.decodeByteArray(user.getFoto(),0,user.getFoto().length);

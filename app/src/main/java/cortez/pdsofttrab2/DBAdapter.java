@@ -26,7 +26,7 @@ public class DBAdapter extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS tabela (usuario VARCHAR(40), senha VARCHAR(30), id INT PRIMARY KEY UNIQUE, " +
+        db.execSQL("CREATE TABLE IF NOT EXISTS tabela (usuario VARCHAR(40), senha VARCHAR(30), id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                 "rua VARCHAR(40), numero VARCHAR(10), complemento VARCHAR(30), bairro VARCHAR(10), cep INT, cidade VARCHAR(30), estado VARCHAR(20), " +
                 "ano_nascimento INT, celular VARCHAR(15), email VARCHAR(20), foto BLOB)");
 
@@ -45,7 +45,6 @@ public class DBAdapter extends SQLiteOpenHelper{
         try{
             values.put("usuario", user.getUser());
             values.put("senha", user.getSenha());
-            values.put("id",user.getId());
             values.put("foto", user.getFoto());
             db.insert("tabela",null,values);
             db.close();
@@ -137,7 +136,7 @@ public class DBAdapter extends SQLiteOpenHelper{
                 } while (cursor.moveToNext());
             }
 
-            Log.d("getAllUsers()", users.toString());
+            Log.d("searchForUsers()", users.toString());
             db.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,7 +149,7 @@ public class DBAdapter extends SQLiteOpenHelper{
         try {
             SQLiteDatabase db = this.getWritableDatabase();
             db.execSQL("DROP TABLE IF EXISTS tabela");
-            db.execSQL("CREATE TABLE IF NOT EXISTS tabela (usuario VARCHAR(40), senha VARCHAR(30), id INT PRIMARY KEY UNIQUE, " +
+            db.execSQL("CREATE TABLE IF NOT EXISTS tabela (usuario VARCHAR(40), senha VARCHAR(30), id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                     "rua VARCHAR(40), numero VARCHAR(10), complemento VARCHAR(30), bairro VARCHAR(10), cep INT, cidade VARCHAR(30), estado VARCHAR(20), " +
                     "ano_nascimento INT, celular VARCHAR(15), email VARCHAR(20), foto BLOB)");
         }catch(SQLException e){

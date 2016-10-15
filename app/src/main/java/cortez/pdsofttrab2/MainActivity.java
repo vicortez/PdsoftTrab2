@@ -7,12 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     //field
     Button newUserButton;
     TextView usernameTextView;
+    List<User> users = new LinkedList<User>();
+    DBAdapter db = new DBAdapter(this);
+    TextView passwordTextView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         newUserButton = (Button) findViewById(R.id.newUserButton);
         usernameTextView = (TextView) findViewById(R.id.userEditText);
+        passwordTextView = (TextView) findViewById(R.id.senhaEditText);
     }
 
     public void onClick(View v){
@@ -31,9 +41,18 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.loginButton:
-                Intent loginIntent = new Intent(this,UserScreen.class);
-                loginIntent.putExtra("username",usernameTextView.getText().toString());
-                startActivity(loginIntent);
+                //checando se a senha confere com o usuario
+                users = db.searchFor("usuario",usernameTextView.getText().toString(),"tabela");
+                String senhaDigitada = passwordTextView.getText().toString();
+                if(users.get(0).getSenha().equals(passwordTextView.getText().toString())){
+                    Intent loginIntent = new Intent(this, UserScreen.class);
+                    loginIntent.putExtra("username", usernameTextView.getText().toString());
+                    startActivity(loginIntent);
+                }
+                else {
+                    Toast t = Toast.makeText(this, "Usuario ou senha incorretos", Toast.LENGTH_LONG);
+                    t.show();
+                }
                 break;
         }
     }
