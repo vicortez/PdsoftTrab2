@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 //checando se a senha confere com o usuario
                 users = db.searchFor("usuario",usernameTextView.getText().toString(),"tabela");
                 String senhaDigitada = passwordTextView.getText().toString();
-                if(users.get(0).getSenha().equals(passwordTextView.getText().toString())){
+                if(users.get(0).getSenha().equals(Security.encrypt(passwordTextView.getText().toString()))){
                     Intent loginIntent = new Intent(this, UserScreen.class);
                     loginIntent.putExtra("username", usernameTextView.getText().toString());
                     startActivity(loginIntent);

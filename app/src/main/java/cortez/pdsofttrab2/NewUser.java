@@ -21,6 +21,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.List;
 
@@ -71,8 +73,8 @@ public class NewUser extends AppCompatActivity {
 
                 //criamos um user com as informacoes das views
                 user = new User();
+                user.setSenha(Security.encrypt(senhaEdittext.getText().toString()));
                 user.setUser(userEditText.getText().toString());
-                user.setSenha(senhaEdittext.getText().toString());
                 Bitmap foto = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                 //precisamos salvar o bitmap da foto em forma de bytearray
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
