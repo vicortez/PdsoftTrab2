@@ -27,7 +27,7 @@ public class DBAdapter extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS tabela (usuario VARCHAR(40), senha BINARY(32), id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                "rua VARCHAR(40), numero VARCHAR(10), complemento VARCHAR(30), bairro VARCHAR(10), cep INT, cidade VARCHAR(30), estado VARCHAR(20), " +
+                "nome VARCHAR(30), rua VARCHAR(40), numero VARCHAR(10), complemento VARCHAR(30), bairro VARCHAR(10), cep VARCHAR(10), cidade VARCHAR(30), estado VARCHAR(20), " +
                 "ano_nascimento INT, celular VARCHAR(15), email VARCHAR(20), foto BLOB)");
 
     }
@@ -46,6 +46,19 @@ public class DBAdapter extends SQLiteOpenHelper{
             values.put("usuario", user.getUser());
             values.put("senha", user.getSenha());
             values.put("foto", user.getFoto());
+            values.put("nome", user.getNome());
+            //endereço
+            values.put("rua", user.getRua());
+            values.put("bairro", user.getBairro());
+            values.put("numero", user.getNumero());
+            values.put("complemento", user.getComplemento());
+            values.put("cidade", user.getCidade());
+            values.put("estado", user.getEstado());
+            values.put("cep", user.getCep());
+            //contato
+            values.put("celular", user.getCelular());
+            values.put("email", user.getMail());
+
             db.insert("tabela",null,values);
             db.close();
         }catch(SQLException e){
@@ -101,6 +114,7 @@ public class DBAdapter extends SQLiteOpenHelper{
                     user.setUser(cursor.getString(cursor.getColumnIndex("usuario")));
                     user.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
                     user.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    //user.setNome(cursor.getString(cursor.getColumnIndex("nome")));
 
                     // Add book to books
                     users.add(user);
@@ -131,6 +145,19 @@ public class DBAdapter extends SQLiteOpenHelper{
                     user.setUser(cursor.getString(cursor.getColumnIndex("usuario")));
                     user.setId(cursor.getInt(cursor.getColumnIndex("id")));
                     user.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+                    user.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+                    //endereço
+                    user.setRua(cursor.getString(cursor.getColumnIndex("rua")));
+                    user.setBairro(cursor.getString(cursor.getColumnIndex("bairro")));
+                    user.setComplemento(cursor.getString(cursor.getColumnIndex("complemento")));
+                    user.setNumero(cursor.getString(cursor.getColumnIndex("numero")));
+                    user.setCidade(cursor.getString(cursor.getColumnIndex("cidade")));
+                    user.setEstado(cursor.getString(cursor.getColumnIndex("estado")));
+                    user.setCep(cursor.getString(cursor.getColumnIndex("cep")));
+                    //contato
+                    user.setCelular(cursor.getString(cursor.getColumnIndex("celular")));
+                    user.setMail(cursor.getString(cursor.getColumnIndex("email")));
+
                     user.setFoto(cursor.getBlob(cursor.getColumnIndex("foto")));
                     users.add(user);
                 } while (cursor.moveToNext());
@@ -150,7 +177,7 @@ public class DBAdapter extends SQLiteOpenHelper{
             SQLiteDatabase db = this.getWritableDatabase();
             db.execSQL("DROP TABLE IF EXISTS tabela");
             db.execSQL("CREATE TABLE IF NOT EXISTS tabela (usuario VARCHAR(40), senha BINARY(32), id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                    "rua VARCHAR(40), numero VARCHAR(10), complemento VARCHAR(30), bairro VARCHAR(10), cep INT, cidade VARCHAR(30), estado VARCHAR(20), " +
+                    "nome VARCHAR(30), rua VARCHAR(40), numero VARCHAR(10), complemento VARCHAR(30), bairro VARCHAR(10), cep VARCHAR(10), cidade VARCHAR(30), estado VARCHAR(20), " +
                     "ano_nascimento INT, celular VARCHAR(15), email VARCHAR(20), foto BLOB)");
         }catch(SQLException e){
             e.printStackTrace();
@@ -164,3 +191,4 @@ public class DBAdapter extends SQLiteOpenHelper{
 
 
 }
+Contact GitHub 
