@@ -29,36 +29,34 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:padding="5sp"
-                android:id="@+id/streetField"
-                android:layout_below="@+id/nameField"
-                android:layout_alignParentStart="true">
+                android:id="@+id/userField">
 
                 <TextView
-                    android:text="Rua"
+                    android:text="Usuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ruaTextView"
+                    android:id="@+id/userTextView"
                     android:textSize="20sp"
                     android:padding="10sp"
-                    android:layout_weight="1.04"/>
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
 
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:id="@+id/ruaEditText"
+                    android:id="@+id/userEditText"
+                    android:textSize="20sp"
                     android:padding="10sp"
-                    android:layout_weight="2.79"
-                    android:text="nao implementado" />
+                    android:layout_weight="1"/>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linearLayout"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:padding="5sp"
                 android:id="@+id/nameField">
@@ -70,16 +68,305 @@
                     android:id="@+id/nomeTextView"
                     android:textSize="20sp"
                     android:padding="10sp"
-                    android:layout_weight="0.61"/>
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
 
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:id="@+id/nomeEditText"
                     android:padding="10sp"
-                    android:layout_weight="3.87"
-                    android:text="nao implementado" />
+                    android:textSize="20sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/enderecoField">
+
+                <TextView
+                    android:text="ENDEREÇO:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/enderecoTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/streetField">
+
+                <TextView
+                    android:text="Rua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ruaTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ruaEditText"
+                    android:padding="10sp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/numeroField">
+
+                <TextView
+                    android:text="Numero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/numeroTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/numeroEditText"
+                    android:padding="10sp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/bairroField">
+
+                <TextView
+                    android:text="Bairro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bairroTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bairroEditText"
+                    android:padding="10sp"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/complementoField">
+
+                <TextView
+                    android:text="Complemento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/compelmentoTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/complementoEditText"
+                    android:padding="10sp"
+                    android:textSize="20sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/cepField">
+
+                <TextView
+                    android:text="CEP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cepTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cepEditText"
+                    android:padding="10sp"
+                    android:textSize="20sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5sp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:text="Cidade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cidadeTextView"
+                        android:textSize="20sp"
+                        android:padding="10sp"
+                        android:textColor="#000"
+                        android:layout_weight="0"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cidadeEditText"
+                        android:padding="10sp"
+                        android:textSize="20sp"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:text="UF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/estadoTextView"
+                        android:textSize="20sp"
+                        android:padding="10sp"
+                        android:textColor="#000"
+                        android:layout_weight="0"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/estadoEditText"
+                        android:padding="10sp"
+                        android:textSize="20sp"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/contatoField">
+
+                <TextView
+                    android:text="INFORMAÇÕES DE CONTATO:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contatoTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/celularField">
+
+                <TextView
+                    android:text="Celular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/celularTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/celularEditText"
+                    android:padding="10sp"
+                    android:textSize="20sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/mailField">
+
+                <TextView
+                    android:text="email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mailTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:textColor="#000"
+                    android:layout_weight="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mailEditText"
+                    android:padding="10sp"
+                    android:textSize="20sp"
+                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
