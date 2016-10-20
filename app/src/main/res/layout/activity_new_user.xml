@@ -13,8 +13,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/firstScroll">
+        android:layout_height="300dp"
+        android:id="@+id/firstScroll"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
@@ -34,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:id="@+id/textView3"
+                    android:id="@+id/userTextView"
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentTop="true" />
 
@@ -44,7 +46,7 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/userEditText"
-                    android:layout_below="@+id/textView3"
+                    android:layout_below="@+id/userTextView"
                     android:layout_alignStart="@+id/senhaEditText" />
 
                 <EditText
@@ -53,7 +55,7 @@
                     android:inputType="textPassword"
                     android:ems="10"
                     android:id="@+id/senhaEditText"
-                    android:layout_below="@+id/textView2"
+                    android:layout_below="@+id/senhaTextView"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -61,7 +63,7 @@
                     android:textSize="20sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView2"
+                    android:id="@+id/senhaTextView"
                     android:layout_below="@+id/userEditText"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>
@@ -107,7 +109,7 @@
                     android:id="@+id/nomeTextView"
                     android:textSize="20sp"
                     android:padding="10sp"
-                    android:layout_weight="0.61"/>
+                    android:layout_weight="0"/>
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -115,9 +117,28 @@
                     android:inputType="textPersonName"
                     android:id="@+id/nomeEditText"
                     android:padding="10sp"
-                    android:layout_weight="3.87"
-                    android:text="nao implementado" />
+                    android:layout_weight="1" />
             </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/enderecoField">
+
+                <TextView
+                    android:text="ENDEREÇO:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/enderecoTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="1.04"/>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -135,7 +156,7 @@
                     android:id="@+id/ruaTextView"
                     android:textSize="20sp"
                     android:padding="10sp"
-                    android:layout_weight="1.04"/>
+                    android:layout_weight="0"/>
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -143,31 +164,271 @@
                     android:inputType="textPersonName"
                     android:id="@+id/ruaEditText"
                     android:padding="10sp"
-                    android:layout_weight="2.79"
-                    android:text="nao implementado" />
+                    android:layout_weight="3"
+                    android:text="" />
             </LinearLayout>
 
-            <Button
-                android:text="Registrar"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/createNewUserButton"
-                android:onClick="onClick"/>
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/numeroField">
 
-            <Button
-                android:text="Show table"
+                <TextView
+                    android:text="Numero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/numeroTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="0"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/numeroEditText"
+                    android:padding="10sp"
+                    android:layout_weight="3"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/showTableButton"
-                android:onClick="onClick" />
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/bairroField">
 
+                <TextView
+                    android:text="Bairro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bairroTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="0"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/bairroEditText"
+                    android:padding="10sp"
+                    android:layout_weight="1"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/complementoField">
+
+                <TextView
+                    android:text="Complemento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/compelmentoTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="0"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:id="@+id/complementoEditText"
+                    android:padding="10sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/cepField">
+
+                <TextView
+                    android:text="CEP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cepTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="0"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/cepEditText"
+                    android:padding="10sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5sp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <TextView
+                            android:text="Cidade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/cidadeTextView"
+                            android:textSize="20sp"
+                            android:padding="10sp"
+                            android:layout_weight="0"/>
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:id="@+id/cidadeEditText"
+                            android:padding="10sp"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
+                        <TextView
+                            android:text="UF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/estadoTextView"
+                            android:textSize="20sp"
+                            android:padding="10sp"
+                            android:layout_weight="0"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:id="@+id/estadoEditText"
+                            android:padding="10sp"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/contatoField">
+
+                <TextView
+                    android:text="INFORMAÇÕES DE CONTATO:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contatoTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/celularField">
+
+                <TextView
+                    android:text="Celular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/celularTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="0"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/celularEditText"
+                    android:padding="10sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="5sp"
+                android:id="@+id/mailField">
+
+                <TextView
+                    android:text="email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mailTextView"
+                    android:textSize="20sp"
+                    android:padding="10sp"
+                    android:layout_weight="0"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/mailEditText"
+                    android:padding="10sp"
+                    android:layout_weight="1" />
+                </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstScroll"
+        android:id="@+id/bottonField">
+
+        <Button
+            android:text="Registrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/createNewUserButton"
+            android:onClick="onClick"/>
+
+        <Button
+            android:text="Show table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showTableButton"
+            android:onClick="onClick" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="150sp"
-        android:layout_below="@id/firstScroll">
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bottonField">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -178,8 +439,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/listaTextView" />
-
         </LinearLayout>
     </ScrollView>
+
 
 </RelativeLayout>
