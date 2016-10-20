@@ -1,10 +1,12 @@
 package cortez.pdsofttrab2;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -30,9 +32,25 @@ public class NewUser extends AppCompatActivity {
 
     public static final int REQUEST_CODE_IMAGE_PICK = 10;
     //fields
-    TextView userEditText;
+    TextView userEdittext;
     TextView senhaEdittext;
+    TextView nomeEdittext;
+    //contato
+    TextView ruaEdittext;
+    TextView bairroEdittext;
+    TextView complementoEdittext;
+    TextView numeroEdittext;
+    TextView cepEdittext;
+    TextView cidadeEdittext;
+    TextView estadoEdittext;
+    //contato
+    TextView celularEdittext;
+    TextView mailEdittext;
     TextView listaTextView;
+    //campos obrigatorios
+    TextView mailTextview, userTextview, senhaTextview, nomeTextview;
+    ColorStateList originColor;
+
     User user;
     DBAdapter db = new DBAdapter(this);
     ImageView imageView;
@@ -43,10 +61,28 @@ public class NewUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
 
-        userEditText = (TextView) findViewById(R.id.userEditText);
+        userEdittext = (TextView) findViewById(R.id.userEditText);
         senhaEdittext = (TextView) findViewById(R.id.senhaEditText);
         listaTextView = (TextView) findViewById(R.id.listaTextView);
+        nomeEdittext = (TextView) findViewById(R.id.nomeEditText);
+        //endereço
+        ruaEdittext = (TextView) findViewById(R.id.ruaEditText);
+        bairroEdittext = (TextView) findViewById(R.id.bairroEditText);
+        complementoEdittext = (TextView) findViewById(R.id.complementoEditText);
+        numeroEdittext = (TextView) findViewById(R.id.numeroEditText);
+        cepEdittext = (TextView) findViewById(R.id.cepEditText);
+        cidadeEdittext = (TextView) findViewById(R.id.cidadeEditText);
+        estadoEdittext = (TextView) findViewById(R.id.estadoEditText);
+        //contato
+        celularEdittext = (TextView) findViewById(R.id.celularEditText);
+        mailEdittext = (TextView) findViewById(R.id.mailEditText);
         imageView = (ImageView) findViewById(R.id.imageViewCreate);
+        //campos obrigatorios
+        mailTextview = (TextView) findViewById(R.id.mailTextView);
+        userTextview = (TextView) findViewById(R.id.userTextView);
+        senhaTextview = (TextView) findViewById(R.id.senhaTextView);
+        nomeTextview = (TextView) findViewById(R.id.nomeTextView);
+        originColor = userTextview.getTextColors();
     }
 
     public void onClick(View v){
@@ -74,7 +110,20 @@ public class NewUser extends AppCompatActivity {
                 //criamos um user com as informacoes das views
                 user = new User();
                 user.setSenha(Security.encrypt(senhaEdittext.getText().toString()));
-                user.setUser(userEditText.getText().toString());
+                user.setUser(userEdittext.getText().toString());
+                user.setNome(nomeEdittext.getText().toString());
+                //endereço
+                user.setRua(ruaEdittext.getText().toString());
+                user.setBairro(bairroEdittext.getText().toString());
+                user.setNumero(numeroEdittext.getText().toString());
+                user.setComplemento(complementoEdittext.getText().toString());
+                user.setCep(cepEdittext.getText().toString());
+                user.setCidade(cidadeEdittext.getText().toString());
+                user.setEstado(estadoEdittext.getText().toString());
+                //contato
+                user.setCelular(celularEdittext.getText().toString());
+                user.setMail(mailEdittext.getText().toString());
+
                 Bitmap foto = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                 //precisamos salvar o bitmap da foto em forma de bytearray
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -83,14 +132,49 @@ public class NewUser extends AppCompatActivity {
                 user.setFoto(fotoByteArray);
 
                 //checamos se ja existe um user com esse username, se nao, adicionamos.
-                if(db.searchFor("usuario",user.getUser(),"tabela").size() == 0) {
-                    db.addUser(user);
-                    Toast t = Toast.makeText(this, "user adicionado!", Toast.LENGTH_LONG);
+                if(user.getUser().equals("")||user.getMail().equals("")||user.getNome().equals("")||user.getSenha().equals("")){
+                    Toast t = Toast.makeText(this, "campos obrigatorios!", Toast.LENGTH_LONG);
                     t.show();
-                }
-                else{
-                    Toast t = Toast.makeText(this, "Nome de usuario já existe.",Toast.LENGTH_LONG);
-                    t.show();
+                    if(user.getUser().equals(""))
+                        userTextview.setTextColor(Color.RED);
+                    else
+                        userTextview.setTextColor(originColor);
+
+                    if(user.getNome().equals(""))
+                        nomeTextview.setTextColor(Color.RED);
+                    else
+                        nomeTextview.setTextColor(originColor);
+
+                    if(user.getSenha().equals(""))
+                        senhaTextview.setTextColor(Color.RED);
+                    else
+                        senhaTextview.setTextColor(originColor);
+
+                    if(user.getMail().equals(""))
+                        mailTextview.setTextColor(Color.RED);
+                    else
+                        mailTextview.setTextColor(originColor);
+
+                    return;
+                }else {
+                    if(db.searchFor("usuario",user.getUser(),"tabela").size() == 0) {
+                        mailTextview.setTextColor(originColor);
+                        senhaTextview.setTextColor(originColor);
+                        nomeTextview.setTextColor(originColor);
+                        userTextview.setTextColor(originColor);
+                        db.addUser(user);
+                        Toast t = Toast.makeText(this, "user adicionado!", Toast.LENGTH_LONG);
+                        t.show();
+                    }
+                    else{
+                        userTextview.setTextColor(Color.RED);
+                        mailTextview.setTextColor(originColor);
+                        senhaTextview.setTextColor(originColor);
+                        nomeTextview.setTextColor(originColor);
+
+                        Toast t = Toast.makeText(this, "Nome de usuario já existe.",Toast.LENGTH_LONG);
+                        t.show();
+                    }
                 }
                 break;
 
@@ -141,3 +225,4 @@ public class NewUser extends AppCompatActivity {
     }
 
 }
+Contact GitHub 
