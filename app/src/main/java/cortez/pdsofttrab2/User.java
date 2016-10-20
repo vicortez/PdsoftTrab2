@@ -9,16 +9,86 @@ import android.graphics.Bitmap;
 public class User {
 
     //fields
-    String user;
-    String senha;
-    String nome;
-    String rua;
-    int id;
-    byte[] foto;
+    private String user;
+    private String senha;
+    private String nome;
+    private int id;
+    private byte[] foto;
+    //endereço
+    private String rua;
+    private String bairro;
+    private String cep;
+    private String numero;
+    private String complemento;
+    private String cidade;
+    private String estado;
+    //contato
+    private String celular;
+    private String mail;
 
+    public String getCelular() {
+        return celular;
+    }
 
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
 
+    public String getMail() {
+        return mail;
+    }
 
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     User() {
 
@@ -68,3 +138,4 @@ public class User {
         this.foto = foto;
     }
 }
+Contact GitHub 
