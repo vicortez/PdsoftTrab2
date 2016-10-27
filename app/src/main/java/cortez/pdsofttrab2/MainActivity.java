@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton = (Button) findViewById(R.id.loginButton);
         usernameTextView = (TextView) findViewById(R.id.userEditText);
         passwordTextView = (TextView) findViewById(R.id.senhaEditText);
+        
 
         autoLoginPref = getSharedPreferences("autoLogin",0);
         autoLoginPrefEditor = autoLoginPref.edit();

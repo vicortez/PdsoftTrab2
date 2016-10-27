@@ -225,4 +225,3 @@ public class NewUser extends AppCompatActivity {
     }
 
 }
-Contact GitHub 
